@@ -1,0 +1,6 @@
+name: crystal-asciidoctor-mathematical
+title: 'Crystal Asciidoctor Mathematical'
+version: '0.1.0'
+nav:
+  - modules/ROOT/nav.adoc
+  - modules/fr/nav.adoc

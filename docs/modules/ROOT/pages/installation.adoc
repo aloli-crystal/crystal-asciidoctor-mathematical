@@ -1,0 +1,20 @@
+= Installation
+
+Add to your `shard.yml`:
+
+[source,yaml]
+----
+dependencies:
+  crystal-asciidoctor-mathematical:
+    github: aloli-crystal/crystal-asciidoctor-mathematical
+    version: "~> 0.1"
+----
+
+Then run `shards install`.
+
+For server-side rendering (optional):
+
+[source,bash]
+----
+npm install -g katex
+----

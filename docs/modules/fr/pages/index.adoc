@@ -1,0 +1,25 @@
+= Crystal Asciidoctor Mathematical
+
+Extension STEM (mathematiques) pour Crystal, inspiree de la gem Ruby https://github.com/asciidoctor/asciidoctor-mathematical[asciidoctor-mathematical].
+
+== Approche
+
+La gem Ruby utilise la bibliotheque C Mathematical/lasem. Ce port Crystal adopte une approche pragmatique en utilisant KaTeX ou MathJax.
+
+*Double mode :*
+
+* *Cote client* (par defaut) : Injecte les CSS/JS KaTeX ou MathJax dans la sortie HTML
+* *Cote serveur* (optionnel) : Utilise le CLI `katex` pour pre-rendre les maths
+
+== Fonctionnalites
+
+* Traite les blocs STEM : `[stem]`, `[latexmath]`, `[asciimath]`
+* Traite les STEM en ligne : `stem:[expression]`
+* Rendu KaTeX (par defaut) ou MathJax
+* Rendu cote client ou cote serveur
+* Configurable via les attributs du document
+* Enregistrement automatique comme extension
+
+== Licence
+
+MIT

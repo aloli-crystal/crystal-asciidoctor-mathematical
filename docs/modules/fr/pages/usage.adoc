@@ -1,0 +1,34 @@
+= Utilisation
+
+[source,crystal]
+----
+require "asciidoctor_mathematical"
+
+input = <<-ADOC
+= Document Mathematique
+:stem: latexmath
+
+L'equation stem:[E = mc^2] est celebre.
+
+[stem]
+\----
+\sum_{i=1}^{n} i = \frac{n(n+1)}{2}
+\----
+ADOC
+
+doc = Asciidoctor.load(input)
+output = doc.convert
+----
+
+== Attributs du Document
+
+[cols="2,2,3"]
+|===
+| Attribut | Par defaut | Description
+
+| `:stem:` | (aucun) | Active le traitement STEM
+| `:mathematical-renderer:` | `katex` | Moteur de rendu : `katex` ou `mathjax`
+| `:mathematical-mode:` | `client` | Mode : `client` ou `server`
+| `:katex-version:` | `0.16.11` | Version KaTeX CDN
+| `:mathjax-version:` | `3.2.2` | Version MathJax CDN
+|===
