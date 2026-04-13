@@ -1,0 +1,29 @@
+name: crystal-asciidoctor-mathematical
+version: 0.1.0
+
+description: |
+  STEM (math) processing extension for crystal-asciidoctor.
+  Renders LaTeX and AsciiMath expressions via KaTeX or MathJax
+  (client-side or server-side with katex CLI).
+  Pragmatic Crystal port inspired by the asciidoctor-mathematical Ruby gem 0.3.5
+  (different approach: KaTeX/MathJax instead of Mathematical/lasem C library).
+
+authors:
+  - Philippe Nénert <philippe@aloli.fr>
+
+license: MIT
+
+# Pour le développement local, remplacer par :
+#   crystal-asciidoctor:
+#     path: ../crystal-asciidoctor
+dependencies:
+  crystal-asciidoctor:
+    github: aloli-crystal/crystal-asciidoctor
+    version: "~> 2.0"
+
+development_dependencies:
+  ameba:
+    github: crystal-ameba/ameba
+    version: "~> 1.6"
+
+crystal: ">= 1.19.0"

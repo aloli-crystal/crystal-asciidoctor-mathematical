@@ -1,0 +1,107 @@
+= crystal-asciidoctor-mathematical
+:toc: left
+:toclevels: 2
+
+Extension STEM (mathematiques) pour Crystal, inspiree de la gem Ruby https://github.com/asciidoctor/asciidoctor-mathematical[asciidoctor-mathematical].
+
+link:README.adoc[English version]
+
+== Approche
+
+La gem Ruby `asciidoctor-mathematical` (v0.3.5) convertit les expressions LaTeX en images SVG/PNG via la bibliotheque C Mathematical/lasem. Ce port Crystal adopte une approche pragmatique en utilisant KaTeX ou MathJax pour le rendu.
+
+**Double mode :**
+
+* **Cote client** (par defaut) : Injecte les CSS/JS KaTeX ou MathJax dans la sortie HTML pour un rendu dans le navigateur
+* **Cote serveur** (optionnel) : Utilise le CLI `katex` (`npm install -g katex`) pour pre-rendre les maths en HTML
+
+== Fonctionnalites
+
+* Traite les blocs STEM : `[stem]`, `[latexmath]`, `[asciimath]`
+* Traite les STEM en ligne : `stem:[expression]`, `latexmath:[expression]`, `asciimath:[expression]`
+* Rendu KaTeX (par defaut) ou MathJax
+* Rendu cote client (par defaut) ou cote serveur
+* Configurable via les attributs du document
+* Enregistrement automatique comme extension Asciidoctor
+
+== Installation
+
+Ajouter dans votre `shard.yml` :
+
+[source,yaml]
+----
+dependencies:
+  crystal-asciidoctor-mathematical:
+    github: aloli-crystal/crystal-asciidoctor-mathematical
+    version: "~> 0.1"
+----
+
+Puis executer `shards install`.
+
+Pour le rendu cote serveur (optionnel) :
+
+[source,bash]
+----
+npm install -g katex
+----
+
+== Utilisation
+
+[source,crystal]
+----
+require "asciidoctor_mathematical"
+
+input = <<-ADOC
+= Document Mathematique
+:stem: latexmath
+
+L'equation stem:[E = mc^2] est celebre.
+
+[stem]
+\----
+\sum_{i=1}^{n} i = \frac{n(n+1)}{2}
+\----
+ADOC
+
+doc = Asciidoctor.load(input)
+output = doc.convert
+# => HTML avec CSS/JS KaTeX injectes et delimiteurs en place
+----
+
+== Attributs du Document
+
+[cols="2,2,3"]
+|===
+| Attribut | Par defaut | Description
+
+| `:stem:`
+| (aucun)
+| Active le traitement STEM. Valeurs : `latexmath`, `asciimath`
+
+| `:mathematical-renderer:`
+| `katex`
+| Moteur de rendu : `katex` ou `mathjax`
+
+| `:mathematical-mode:`
+| `client`
+| Mode de rendu : `client` (navigateur) ou `server` (CLI katex)
+
+| `:katex-version:`
+| `0.16.11`
+| Version KaTeX CDN
+
+| `:mathjax-version:`
+| `3.2.2`
+| Version MathJax CDN
+|===
+
+== Tests
+
+[source,bash]
+----
+crystal spec
+----
+
+== Licence
+
+MIT

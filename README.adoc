@@ -1,0 +1,130 @@
+= crystal-asciidoctor-mathematical
+:toc: left
+:toclevels: 2
+
+STEM (math) processing extension for Crystal, inspired by the https://github.com/asciidoctor/asciidoctor-mathematical[asciidoctor-mathematical] Ruby gem.
+
+link:README.fr.adoc[Version francaise]
+
+== Approach
+
+The Ruby gem `asciidoctor-mathematical` (v0.3.5) converts LaTeX math expressions to SVG/PNG images using the Mathematical/lasem C library. This Crystal port takes a pragmatic approach using KaTeX or MathJax for rendering instead.
+
+**Dual mode:**
+
+* **Client-side** (default): Injects KaTeX or MathJax CSS/JS into the HTML output so math is rendered in the browser
+* **Server-side** (optional): Uses the `katex` CLI (`npm install -g katex`) to pre-render math to HTML
+
+== Features
+
+* Processes STEM blocks: `[stem]`, `[latexmath]`, `[asciimath]`
+* Processes inline STEM: `stem:[expression]`, `latexmath:[expression]`, `asciimath:[expression]`
+* KaTeX rendering (default) or MathJax
+* Client-side (default) or server-side rendering
+* Configurable via document attributes
+* Auto-registers as an Asciidoctor extension
+
+== Installation
+
+Add to your `shard.yml`:
+
+[source,yaml]
+----
+dependencies:
+  crystal-asciidoctor-mathematical:
+    github: aloli-crystal/crystal-asciidoctor-mathematical
+    version: "~> 0.1"
+----
+
+Then run `shards install`.
+
+For server-side rendering (optional):
+
+[source,bash]
+----
+npm install -g katex
+----
+
+== Usage
+
+[source,crystal]
+----
+require "asciidoctor_mathematical"
+
+input = <<-ADOC
+= Math Document
+:stem: latexmath
+
+The equation stem:[E = mc^2] is famous.
+
+[stem]
+\----
+\sum_{i=1}^{n} i = \frac{n(n+1)}{2}
+\----
+ADOC
+
+doc = Asciidoctor.load(input)
+output = doc.convert
+# => HTML with KaTeX CSS/JS injected and math delimiters in place
+----
+
+== Document Attributes
+
+[cols="2,2,3"]
+|===
+| Attribute | Default | Description
+
+| `:stem:`
+| (none)
+| Enable STEM processing. Values: `latexmath`, `asciimath`
+
+| `:mathematical-renderer:`
+| `katex`
+| Renderer to use: `katex` or `mathjax`
+
+| `:mathematical-mode:`
+| `client`
+| Rendering mode: `client` (browser) or `server` (katex CLI)
+
+| `:katex-version:`
+| `0.16.11`
+| KaTeX CDN version
+
+| `:mathjax-version:`
+| `3.2.2`
+| MathJax CDN version
+|===
+
+== Versions
+
+[cols="2,2,2"]
+|===
+| | Version | Date
+
+| *Ruby asciidoctor-mathematical (reference)*
+| 0.3.5
+| (different approach: KaTeX/MathJax instead of Mathematical/lasem)
+
+| *Ruby asciidoctor (parser, via crystal-asciidoctor)*
+| 2.0.26
+| 2025-10-24
+
+| *crystal-asciidoctor-mathematical*
+| 0.1.0
+| 2026-04-09
+|===
+
+== Development
+
+[source,bash]
+----
+git clone https://github.com/aloli-crystal/crystal-asciidoctor.git
+git clone https://github.com/aloli-crystal/crystal-asciidoctor-mathematical.git
+cd crystal-asciidoctor-mathematical
+shards install
+crystal spec
+----
+
+== License
+
+MIT
