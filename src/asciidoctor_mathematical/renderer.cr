@@ -2,7 +2,7 @@ module AsciidoctorMathematical
   # Renderer handles STEM expression rendering, either server-side via
   # the `katex` CLI or by preparing content for client-side rendering.
   module Renderer
-    DEFAULT_KATEX_VERSION  = "0.16.11"
+    DEFAULT_KATEX_VERSION   = "0.16.11"
     DEFAULT_MATHJAX_VERSION = "3.2.2"
 
     # Render a math expression server-side using the `katex` CLI.
