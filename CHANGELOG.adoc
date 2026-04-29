@@ -3,6 +3,18 @@
 :toc-title: Versions
 :toclevels: 2
 
+== v0.3.5.1 — 2026-04-29
+
+**Version number realigned with upstream Ruby gem (asciidoctor-mathematical 0.3.5).**
+
+The Aloli convention for Ruby ports is to keep the upstream gem's three first
+digits and append a fourth digit specific to the Crystal port (see
+`feedback_versioning_shards.md`). The previous `0.1.x` numbering was an oversight
+— the port has always tracked the Ruby gem at v0.3.5. The 4th digit (`.1`) is
+the first iteration in the new format.
+
+No behavioral change.
+
 == v0.1.1 — 2026-04-22
 
 * Add the *ameba* linter to the CI pipeline with a shared `.ameba.yml` config aligned with the Crystal ecosystem.
