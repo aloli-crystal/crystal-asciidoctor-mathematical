@@ -3,7 +3,7 @@ require "./spec_helper"
 describe AsciidoctorMathematical do
   describe "VERSION" do
     it "has a version" do
-      AsciidoctorMathematical::VERSION.should eq("0.1.0")
+      AsciidoctorMathematical::VERSION.should eq("0.3.5.2")
     end
 
     it "tracks upstream version" do
