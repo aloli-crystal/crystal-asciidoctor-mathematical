@@ -5,9 +5,9 @@ Add to your `shard.yml`:
 [source,yaml]
 ----
 dependencies:
-  crystal-asciidoctor-mathematical:
-    github: aloli-crystal/crystal-asciidoctor-mathematical
-    version: "~> 0.1"
+  asciicrystal-mathematical:
+    github: aloli-crystal/asciicrystal-mathematical
+    version: "~> 0.3.5.3"
 ----
 
 Then run `shards install`.

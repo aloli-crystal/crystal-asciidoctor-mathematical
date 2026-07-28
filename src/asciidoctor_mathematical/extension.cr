@@ -1,11 +1,11 @@
-module AsciidoctorMathematical
+module AsciicrystalMathematical
   # DocinfoProcessor that injects KaTeX or MathJax CSS into <head>.
-  class MathHeadProcessor < Asciidoctor::Extensions::DocinfoProcessor
+  class MathHeadProcessor < Asciicrystal::Extensions::DocinfoProcessor
     def initialize
       super({"location" => :head} of String => String | Bool | Int32 | Array(String) | Set(Symbol) | Symbol)
     end
 
-    def process(document : Asciidoctor::Document) : String
+    def process(document : Asciicrystal::Document) : String
       renderer = document.attr("mathematical-renderer", "katex") || "katex"
       version = case renderer
                 when "mathjax"
@@ -19,12 +19,12 @@ module AsciidoctorMathematical
   end
 
   # DocinfoProcessor that injects KaTeX or MathJax JS into the footer.
-  class MathFooterProcessor < Asciidoctor::Extensions::DocinfoProcessor
+  class MathFooterProcessor < Asciicrystal::Extensions::DocinfoProcessor
     def initialize
       super({"location" => :footer} of String => String | Bool | Int32 | Array(String) | Set(Symbol) | Symbol)
     end
 
-    def process(document : Asciidoctor::Document) : String
+    def process(document : Asciicrystal::Document) : String
       mode = document.attr("mathematical-mode", "client") || "client"
       # In server mode, JS injection is not needed (math is pre-rendered)
       return "" if mode == "server"
@@ -45,8 +45,8 @@ module AsciidoctorMathematical
   #
   # In server mode, it replaces STEM content with pre-rendered HTML.
   # In client mode, the content is left as-is (the injected JS handles it).
-  class MathTreeProcessor < Asciidoctor::Extensions::TreeProcessor
-    def process(document : Asciidoctor::Document) : Asciidoctor::Document?
+  class MathTreeProcessor < Asciicrystal::Extensions::TreeProcessor
+    def process(document : Asciicrystal::Document) : Asciicrystal::Document?
       mode = document.attr("mathematical-mode", "client") || "client"
       # In client mode, the browser-side renderer handles everything.
       # We only need to intervene in server mode.
@@ -56,9 +56,9 @@ module AsciidoctorMathematical
       document
     end
 
-    private def process_blocks(node : Asciidoctor::AbstractBlock) : Nil
+    private def process_blocks(node : Asciicrystal::AbstractBlock) : Nil
       node.blocks.each do |block|
-        if block.context == :stem && block.is_a?(Asciidoctor::Block)
+        if block.context == :stem && block.is_a?(Asciicrystal::Block)
           style = block.style || "latexmath"
           content = block.content.to_s
           rendered = Renderer.wrap_block(content, style, "server")
@@ -73,12 +73,12 @@ module AsciidoctorMathematical
   # Extension group that registers all mathematical processors.
   #
   # Usage:
-  #   Asciidoctor::Extensions.register(:mathematical, AsciidoctorMathematical::ExtensionGroup)
+  #   Asciicrystal::Extensions.register(:mathematical, AsciicrystalMathematical::ExtensionGroup)
   #
   # Or automatically when requiring the library:
   #   require "asciidoctor_mathematical"
-  class ExtensionGroup < Asciidoctor::Extensions::Group
-    def activate(registry : Asciidoctor::Extensions::Registry) : Nil
+  class ExtensionGroup < Asciicrystal::Extensions::Group
+    def activate(registry : Asciicrystal::Extensions::Registry) : Nil
       registry.docinfo_processor(MathHeadProcessor.new)
       registry.docinfo_processor(MathFooterProcessor.new)
       registry.tree_processor(MathTreeProcessor.new)
@@ -86,5 +86,5 @@ module AsciidoctorMathematical
   end
 
   # Auto-register the extension group globally.
-  Asciidoctor::Extensions.register(:mathematical, ExtensionGroup)
+  Asciicrystal::Extensions.register(:mathematical, ExtensionGroup)
 end

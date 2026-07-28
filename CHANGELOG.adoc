@@ -3,6 +3,15 @@
 :toc-title: Versions
 :toclevels: 2
 
+== v0.3.5.3 — 2026-07-28
+
+**Renaming: `crystal-asciidoctor-mathematical` → `asciicrystal-mathematical`.**
+
+* Shard renamed from `crystal-asciidoctor-mathematical` to `asciicrystal-mathematical`.
+* Crystal module renamed from `AsciidoctorMathematical` to `AsciicrystalMathematical`.
+* Core dependency key updated from `crystal-asciidoctor` to `asciicrystal` (`~> 2.0.26.12`).
+* New public entry point `src/asciicrystal-mathematical.cr` (dependents `require "asciicrystal-mathematical"`); internal `src/asciidoctor_mathematical.cr` kept for Ruby-compat paths.
+
 == v0.3.5.1 — 2026-04-29
 
 **Version number realigned with upstream Ruby gem (asciidoctor-mathematical 0.3.5).**

@@ -1,8 +1,8 @@
-name: crystal-asciidoctor-mathematical
-version: 0.3.5.2
+name: asciicrystal-mathematical
+version: 0.3.5.3
 
 description: |
-  STEM (math) processing extension for crystal-asciidoctor.
+  STEM (math) processing extension for asciicrystal.
   Renders LaTeX and AsciiMath expressions via KaTeX or MathJax
   (client-side or server-side with katex CLI).
   Pragmatic Crystal port inspired by the asciidoctor-mathematical Ruby gem 0.3.5
@@ -14,12 +14,12 @@ authors:
 license: MIT
 
 # Pour le développement local, remplacer par :
-#   crystal-asciidoctor:
+#   asciicrystal:
 #     path: ../crystal-asciidoctor
 dependencies:
-  crystal-asciidoctor:
+  asciicrystal:
     github: aloli-crystal/crystal-asciidoctor
-    version: "~> 2.0"
+    version: "~> 2.0.26.12"
 
 development_dependencies:
   ameba:

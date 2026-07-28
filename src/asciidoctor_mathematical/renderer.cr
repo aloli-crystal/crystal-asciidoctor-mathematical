@@ -1,4 +1,4 @@
-module AsciidoctorMathematical
+module AsciicrystalMathematical
   # Renderer handles STEM expression rendering, either server-side via
   # the `katex` CLI or by preparing content for client-side rendering.
   module Renderer

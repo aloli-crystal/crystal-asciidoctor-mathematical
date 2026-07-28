@@ -1,4 +1,4 @@
-= crystal-asciidoctor-mathematical
+= asciicrystal-mathematical
 :toc: left
 :toclevels: 2
 
@@ -31,9 +31,9 @@ Ajouter dans votre `shard.yml` :
 [source,yaml]
 ----
 dependencies:
-  crystal-asciidoctor-mathematical:
-    github: aloli-crystal/crystal-asciidoctor-mathematical
-    version: "~> 0.1"
+  asciicrystal-mathematical:
+    github: aloli-crystal/asciicrystal-mathematical
+    version: "~> 0.3.5.3"
 ----
 
 Puis executer `shards install`.
@@ -49,7 +49,7 @@ npm install -g katex
 
 [source,crystal]
 ----
-require "asciidoctor_mathematical"
+require "asciicrystal-mathematical"
 
 input = <<-ADOC
 = Document Mathematique

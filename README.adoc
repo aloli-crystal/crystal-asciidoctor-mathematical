@@ -1,4 +1,4 @@
-= crystal-asciidoctor-mathematical
+= asciicrystal-mathematical
 :toc: left
 :toclevels: 2
 
@@ -31,9 +31,9 @@ Add to your `shard.yml`:
 [source,yaml]
 ----
 dependencies:
-  crystal-asciidoctor-mathematical:
-    github: aloli-crystal/crystal-asciidoctor-mathematical
-    version: "~> 0.1"
+  asciicrystal-mathematical:
+    github: aloli-crystal/asciicrystal-mathematical
+    version: "~> 0.3.5.3"
 ----
 
 Then run `shards install`.
@@ -49,7 +49,7 @@ npm install -g katex
 
 [source,crystal]
 ----
-require "asciidoctor_mathematical"
+require "asciicrystal-mathematical"
 
 input = <<-ADOC
 = Math Document
@@ -105,11 +105,11 @@ output = doc.convert
 | 0.3.5
 | (different approach: KaTeX/MathJax instead of Mathematical/lasem)
 
-| *Ruby asciidoctor (parser, via crystal-asciidoctor)*
+| *Ruby asciidoctor (parser, via asciicrystal)*
 | 2.0.26
 | 2025-10-24
 
-| *crystal-asciidoctor-mathematical*
+| *asciicrystal-mathematical*
 | 0.1.0
 | 2026-04-09
 |===
@@ -118,9 +118,9 @@ output = doc.convert
 
 [source,bash]
 ----
-git clone https://github.com/aloli-crystal/crystal-asciidoctor.git
-git clone https://github.com/aloli-crystal/crystal-asciidoctor-mathematical.git
-cd crystal-asciidoctor-mathematical
+git clone https://github.com/aloli-crystal/asciicrystal.git
+git clone https://github.com/aloli-crystal/asciicrystal-mathematical.git
+cd asciicrystal-mathematical
 shards install
 crystal spec
 ----

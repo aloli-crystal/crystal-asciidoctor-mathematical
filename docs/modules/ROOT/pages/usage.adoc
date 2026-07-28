@@ -2,7 +2,7 @@
 
 [source,crystal]
 ----
-require "asciidoctor_mathematical"
+require "asciicrystal-mathematical"
 
 input = <<-ADOC
 = Math Document
