@@ -3,7 +3,7 @@ require "./spec_helper"
 describe AsciicrystalMathematical do
   describe "VERSION" do
     it "has a version" do
-      AsciicrystalMathematical::VERSION.should eq("0.3.5.3")
+      AsciicrystalMathematical::VERSION.should eq("0.3.5.5")
     end
 
     it "tracks upstream version" do

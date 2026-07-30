@@ -3,6 +3,10 @@
 :toc-title: Versions
 :toclevels: 2
 
+== v0.3.5.5 — 2026-07-29
+
+* Corrige l'assertion de test `VERSION.should eq(...)` restée à `0.3.5.3` dans la v0.3.5.4, qui faisait échouer `crystal spec` (et la CI). Aucun changement de code ; correctif de test uniquement.
+
 == v0.3.5.4 — 2026-07-29
 
 * Renommage du dossier source interne `src/asciidoctor_mathematical/` → `src/asciicrystal_mathematical/` (chemin interne ; aucun changement d'API). Provenance du gem Ruby conservée.
