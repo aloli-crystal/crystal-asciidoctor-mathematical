@@ -76,7 +76,7 @@ module AsciicrystalMathematical
   #   Asciicrystal::Extensions.register(:mathematical, AsciicrystalMathematical::ExtensionGroup)
   #
   # Or automatically when requiring the library:
-  #   require "asciidoctor_mathematical"
+  #   require "asciicrystal_mathematical"
   class ExtensionGroup < Asciicrystal::Extensions::Group
     def activate(registry : Asciicrystal::Extensions::Registry) : Nil
       registry.docinfo_processor(MathHeadProcessor.new)

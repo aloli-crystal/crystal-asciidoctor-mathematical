@@ -1,6 +1,6 @@
 require "asciicrystal"
-require "./asciidoctor_mathematical/renderer"
-require "./asciidoctor_mathematical/extension"
+require "./asciicrystal_mathematical/renderer"
+require "./asciicrystal_mathematical/extension"
 
 module AsciicrystalMathematical
   # Lue au compile-time depuis `shard.yml` via le macro `read_file`.

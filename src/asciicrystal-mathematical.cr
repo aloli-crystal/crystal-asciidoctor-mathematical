@@ -1,1 +1,1 @@
-require "./asciidoctor_mathematical"
+require "./asciicrystal_mathematical"
